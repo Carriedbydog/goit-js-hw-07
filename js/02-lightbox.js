@@ -26,20 +26,13 @@ const lightbox = new SimpleLightbox(".gallery a", {
 
 // ========================================
 
-refs.newGallery.addEventListener("click", onImageElClick);
-
-// ========================================
-
 function onImageElClick(event) {
   event.preventDefault();
-  if (event.target.classList.contains("gallery__item")) {
-    const imgSrc = event.target.src;
-
-    let gallery = new SimpleLightbox(".gallery a");
-    gallery.on("show.simplelightbox", function () {
-      const modalLightBox = new SimpleLightbox(`<a href="${imgSrc}">
+  const imgSrc = event.target.src;
+  let gallery = new SimpleLightbox(".gallery a");
+  gallery.on("show.simplelightbox", function () {
+    const modalLightBox = new SimpleLightbox(`<a href="${imgSrc}">
           <img src="${imgSrc}"/></a>`);
-      modalLightBox.open();
-    });
-  }
+    modalLightBox.open();
+  });
 }
